@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ToDo {
+  id: ID!
+  title: String!
+  content: String!
+  user_id: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  todo: [ToDo!]!
+}
+
+type Query {
+  findAll: [User!]!
+  todosByUserId(userId: Float!): [ToDo!]!
+}
+
+type Mutation {
+  create(userDto: UserDto!): User!
+  createTodo(todoDto: ToDoDto!): ToDo!
+}
+
+input UserDto {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input ToDoDto {
+  title: String!
+  content: String!
+  user_id: Float!
+}
