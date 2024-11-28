@@ -29,7 +29,7 @@ export class AuthService {
 
   async generateToken(payload: any) {
     return {
-      access_token: jwt.sign(payload, 'test', { expiresIn: '1h' }),
+      access_token: jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }),
     };
   }
 }
