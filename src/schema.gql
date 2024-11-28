@@ -7,6 +7,7 @@ type ToDo {
   title: String!
   content: String!
   user_id: String!
+  created_at: String!
 }
 
 type User {
@@ -17,14 +18,26 @@ type User {
   todo: [ToDo!]!
 }
 
+type Login {
+  access_token: String!
+}
+
 type Query {
-  findAll: [User!]!
-  todosByUserId(userId: Float!): [ToDo!]!
+  findAllUsers: [User!]!
+  findUserById: User!
+  userTodos: [ToDo!]!
 }
 
 type Mutation {
-  create(userDto: UserDto!): User!
+  login(authDto: LoginDto!): Login!
+  register(userDto: UserDto!): User!
   createTodo(todoDto: ToDoDto!): ToDo!
+  updateTodo(updatetodoDto: UpdateToDoDto!, id: Float!): ToDo!
+}
+
+input LoginDto {
+  email: String!
+  password: String!
 }
 
 input UserDto {
@@ -36,5 +49,9 @@ input UserDto {
 input ToDoDto {
   title: String!
   content: String!
-  user_id: Float!
+}
+
+input UpdateToDoDto {
+  title: String!
+  content: String!
 }

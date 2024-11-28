@@ -1,8 +1,6 @@
 import type { Config } from 'drizzle-kit';
 import 'dotenv/config';
 
-console.log(process.env.DATABASE_URL)
-
 export default {
   schema: './src/db/*.ts', // Ensure this matches your schema file location
   out: './src/db/migrations', // Path for migration files
